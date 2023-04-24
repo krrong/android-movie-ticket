@@ -21,9 +21,9 @@ class MovieReservationActivity : AppCompatActivity() {
             }
     }
 
-    private val scrollView by lazy { MovieDetailView(findViewById<ScrollView>(R.id.reservation_detail_view)) }
+    private val scrollView by lazy { MovieDetailView(findViewById<ScrollView>(R.id.reservation_detail_layout)) }
     private val bottomView by lazy {
-        MovieBottomView(findViewById<ConstraintLayout>(R.id.reservation_bottom_view))
+        MovieBottomView(findViewById<ConstraintLayout>(R.id.reservation_bottom_layout))
             .apply {
                 registerReservationButton { startActivity(makeIntent()) }
                 registerSpinnerListener(movieScheduleUi)
