@@ -57,14 +57,12 @@ class MovieListAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (ItemViewType.of(getItemViewType(position))) {
-            ITEM_VIEW_TYPE_MOVIE -> {
-                val item = movieModelUi[position] as MovieModelUi.MovieScheduleUi
-                (holder as MovieViewHolder).bind(item)
+        when (holder) {
+            is MovieViewHolder -> {
+                holder.bind(movieModelUi[position] as MovieModelUi.MovieScheduleUi)
             }
-            ITEM_VIEW_TYPE_AD -> {
-                val item = movieModelUi[position] as MovieModelUi.AdUi
-                (holder as AdViewHolder).bind(item)
+            is AdViewHolder -> {
+                holder.bind(movieModelUi[position] as MovieModelUi.AdUi)
             }
         }
     }
