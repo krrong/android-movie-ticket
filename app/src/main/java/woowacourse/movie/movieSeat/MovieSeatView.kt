@@ -25,12 +25,7 @@ class MovieSeatView(
 
     init {
         configureSeatTable()
-        bind()
         initListener()
-    }
-
-    private fun bind() {
-        seatTableConfiguration
     }
 
     private fun configureSeatTable(rowCount: Int = DEFAULT_ROW_SIZE, columnCount: Int = DEFAULT_COLUMN_SIZE) {
@@ -58,7 +53,7 @@ class MovieSeatView(
         }
     }
 
-    fun Seat.getColor(): Int {
+    private fun Seat.getColor(): Int {
         return when (row) {
             SeatRow.A, SeatRow.B -> seatTableLayout.context.getColor(R.color.b_class_seat)
             SeatRow.C, SeatRow.D -> seatTableLayout.context.getColor(R.color.s_class_seat)

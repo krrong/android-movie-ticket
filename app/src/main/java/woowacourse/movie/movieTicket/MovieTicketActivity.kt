@@ -52,9 +52,8 @@ class MovieTicketActivity : AppCompatActivity() {
 
         with(movieTicketUi) {
             ticketTitleView.text = title
-            ticketCountView.text = getString(R.string.movie_ticket_count).format(count.toInt())
-            ticketTotalPriceView.text = getString(R.string.movie_ticket_receipt)
-                .format(decimalFormat.format(movieTicketUi.totalPrice), seats)
+            ticketCountView.text = getString(R.string.movie_ticket_count, count.toInt())
+            ticketTotalPriceView.text = getString(R.string.movie_ticket_receipt, decimalFormat.format(movieTicketUi.totalPrice), seats)
             "${DateUtil(context).getDate(date)} ${DateUtil(context).getTime(time)}"
                 .also { ticketMovieReleaseDateView.text = it }
         }
