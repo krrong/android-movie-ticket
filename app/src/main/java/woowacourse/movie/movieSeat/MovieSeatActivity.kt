@@ -45,7 +45,7 @@ class MovieSeatActivity : AppCompatActivity() {
 
     private fun initMovieView() {
         val seatTableLayout = findViewById<TableLayout>(R.id.seat_table)
-        MovieSeatView(seatTableLayout, ::selectSeat)
+        MovieSeatView(seatTableLayout, ::onClickSeat)
 
         val movieTitleView = findViewById<TextView>(R.id.seat_movie_title)
         movieTitleView.text = movieDetail.title
@@ -101,7 +101,7 @@ class MovieSeatActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun selectSeat(seat: Seat, position: TextView) {
+    private fun onClickSeat(seat: Seat, position: TextView) {
         when {
             !selectedSeats.contains(seat) && movieDetail.toDomain().isUpOfCount(selectedSeats.size) -> { selected(seat, position) }
             !selectedSeats.contains(seat) && !movieDetail.toDomain().isUpOfCount(selectedSeats.size) -> Unit
