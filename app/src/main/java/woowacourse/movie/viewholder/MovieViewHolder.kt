@@ -4,7 +4,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import woowacourse.movie.R
 import woowacourse.movie.uimodel.MovieModelUi
 import woowacourse.movie.utils.DateUtil
@@ -12,7 +11,7 @@ import woowacourse.movie.utils.DateUtil
 class MovieViewHolder(
     val view: View,
     val onItemViewClick: (MovieModelUi.MovieScheduleUi) -> Unit,
-) : RecyclerView.ViewHolder(view) {
+) : BaseViewHolder(view) {
 
     private val movieImageView: ImageView = view.findViewById(R.id.movie_poster)
     private val movieTitleView: TextView = view.findViewById(R.id.movie_title)
@@ -21,7 +20,8 @@ class MovieViewHolder(
     private val movieReservationButton: Button =
         view.findViewById(R.id.movie_reservation_button)
 
-    fun bind(item: MovieModelUi.MovieScheduleUi) {
+    override fun <T : MovieModelUi> bind(item: T) {
+        item as MovieModelUi.MovieScheduleUi
         movieImageView.setImageResource(item.poster)
         movieTitleView.text = item.title
         movieReleaseDateView.text = DateUtil(view.context).getDateRange(item.startDate, item.endDate)

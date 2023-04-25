@@ -59,10 +59,10 @@ class MovieListAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is MovieViewHolder -> {
-                holder.bind(movieModelUi[position] as MovieModelUi.MovieScheduleUi)
+                holder.bind(movieModelUi[position])
             }
             is AdViewHolder -> {
-                holder.bind(movieModelUi[position] as MovieModelUi.AdUi)
+                holder.bind(movieModelUi[position])
             }
         }
     }
